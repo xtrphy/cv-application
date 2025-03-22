@@ -1,0 +1,17 @@
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+.your-cv {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900;
+}
+
+.right-side {
+  max-width: 900px;
+  padding: 2rem;
+  border: 3px solid #000;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, .3);
+}
