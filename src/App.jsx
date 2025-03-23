@@ -1,7 +1,7 @@
 import './styles/App.css';
-import MyInput from './components/UI/MyInput/MyInput';
 import { useState } from 'react';
 import MyButton from './components/UI/MyButton/MyButton';
+import FormSection from './components/UI/FormSection';
 
 export default function App() {
   const [generalInfo, setGeneralInfo] = useState({ firstName: '', lastName: '', email: '', phone: '', school: '', degree: '', schoolStartDate: '', schoolEndDate: '', schoolCity: '', position: '', employer: '', workStartDate: '', workEndDate: '', workCity: '' });
@@ -21,45 +21,49 @@ export default function App() {
     <>
       <div className="container">
         <div className="form-container">
-          <form>
-            <h2 style={{ marginBottom: '20px' }}>General Info</h2>
-            <MyInput disabled={disabled} placeholder='First Name' onChange={e => setGeneralInfo({ ...generalInfo, firstName: e.target.value })} value={generalInfo.firstName} type="text" />
+          <FormSection
+            title="General Info"
+            fields={[
+              { name: "firstName", placeholder: "First Name", type: "text" },
+              { name: "lastName", placeholder: "Last Name", type: "text" },
+              { name: "email", placeholder: "Email", type: "email" },
+              { name: "phone", placeholder: "Phone number", type: "text" },
+            ]}
+            generalInfo={generalInfo}
+            setGeneralInfo={setGeneralInfo}
+            disabled={disabled}
+          />
 
-            <MyInput disabled={disabled} placeholder='Last Name' onChange={e => setGeneralInfo({ ...generalInfo, lastName: e.target.value })} value={generalInfo.lastName} type="text" />
+          <FormSection
+            title="Educational Experience"
+            fields={[
+              { name: "school", placeholder: "School", type: "text" },
+              { name: "degree", placeholder: "Degree", type: "text" },
+              { name: "schoolCity", placeholder: "City", type: "text" },
+              { name: "schoolStartDate", placeholder: "Start date", type: "date" },
+              { name: "schoolEndDate", placeholder: "End date", type: "date" },
+            ]}
+            generalInfo={generalInfo}
+            setGeneralInfo={setGeneralInfo}
+            disabled={disabled}
+          />
 
-            <MyInput disabled={disabled} placeholder='Email' onChange={e => setGeneralInfo({ ...generalInfo, email: e.target.value })} value={generalInfo.email} type="email" />
+          <FormSection
+            title="Work Experience"
+            fields={[
+              { name: "position", placeholder: "Position", type: "text" },
+              { name: "employer", placeholder: "Employer", type: "text" },
+              { name: "workCity", placeholder: "City", type: "text" },
+              { name: "workStartDate", placeholder: "Start date", type: "date" },
+              { name: "workEndDate", placeholder: "End date", type: "date" },
+            ]}
+            generalInfo={generalInfo}
+            setGeneralInfo={setGeneralInfo}
+            disabled={disabled}
+          />
 
-            <MyInput disabled={disabled} placeholder='Phone number' onChange={e => setGeneralInfo({ ...generalInfo, phone: e.target.value })} value={generalInfo.phone} type="text" />
-          </form>
-
-          <form>
-            <h2 style={{ marginBottom: '20px' }}>Educational Experience</h2>
-            <MyInput disabled={disabled} placeholder='School' onChange={e => setGeneralInfo({ ...generalInfo, school: e.target.value })} value={generalInfo.school} type="text" />
-
-            <MyInput disabled={disabled} placeholder='Degree' onChange={e => setGeneralInfo({ ...generalInfo, degree: e.target.value })} value={generalInfo.degree} type="text" />
-
-            <MyInput disabled={disabled} placeholder='City' onChange={e => setGeneralInfo({ ...generalInfo, schoolCity: e.target.value })} value={generalInfo.schoolCity} type="text" />
-
-            <MyInput disabled={disabled} placeholder='Start date' onChange={e => setGeneralInfo({ ...generalInfo, schoolStartDate: e.target.value })} value={generalInfo.schoolStartDate} type="date" />
-
-            <MyInput disabled={disabled} placeholder='End date' onChange={e => setGeneralInfo({ ...generalInfo, schoolEndDate: e.target.value })} value={generalInfo.schoolEndDate} type="date" />
-          </form>
-
-          <form>
-            <h2 style={{ marginBottom: '20px' }}>Work Experience</h2>
-            <MyInput disabled={disabled} placeholder='Position' onChange={e => setGeneralInfo({ ...generalInfo, position: e.target.value })} value={generalInfo.position} type="text" />
-
-            <MyInput disabled={disabled} placeholder='Employer' onChange={e => setGeneralInfo({ ...generalInfo, employer: e.target.value })} value={generalInfo.employer} type="text" />
-
-            <MyInput disabled={disabled} placeholder='City' onChange={e => setGeneralInfo({ ...generalInfo, workCity: e.target.value })} value={generalInfo.workCity} type="text" />
-
-            <MyInput disabled={disabled} placeholder='Start date' onChange={e => setGeneralInfo({ ...generalInfo, workStartDate: e.target.value })} value={generalInfo.workStartDate} type="date" />
-
-            <MyInput disabled={disabled} placeholder='End date' onChange={e => setGeneralInfo({ ...generalInfo, workEndDate: e.target.value })} value={generalInfo.workEndDate} type="date" />
-
-            <MyButton children={'Submit'} onClick={handleSubmitButton} />
-            <MyButton children={'Edit'} onClick={handleEditButton} />
-          </form>
+          <MyButton children={'Submit'} onClick={handleSubmitButton} />
+          <MyButton children={'Edit'} onClick={handleEditButton} />
         </div>
 
         <div className="resume">
