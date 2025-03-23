@@ -61,9 +61,10 @@ export default function App() {
             setGeneralInfo={setGeneralInfo}
             disabled={disabled}
           />
-
-          <MyButton children={'Submit'} onClick={handleSubmitButton} />
-          <MyButton children={'Edit'} onClick={handleEditButton} />
+          <div className="btn-container">
+            <MyButton children={'Submit'} onClick={handleSubmitButton} />
+            <MyButton children={'Edit'} onClick={handleEditButton} />
+          </div>
         </div>
 
         <div className="resume">
